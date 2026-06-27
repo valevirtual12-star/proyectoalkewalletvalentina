@@ -1,0 +1,12 @@
+package alkewallet;
+
+public interface Operacionesfinancieras {
+	
+	// atributos 
+	boolean depositar(double monto);
+	boolean retirar(double monto);
+	double convertirMoneda(double tasaCambio);
+		
+			
+
+}

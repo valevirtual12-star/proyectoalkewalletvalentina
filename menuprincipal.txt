@@ -1,0 +1,87 @@
+package alkewallet;
+
+import java.util.Scanner;
+
+public class menuprincipal2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+						
+				Scanner scanner = new Scanner(System.in);
+				System.out.println("=======Creacion de cuenta inicial ======");
+				System.out.println(" ingrese el titular de la cuenta:       ");
+				String titular = scanner.nextLine();
+				System.out.println ("ingrese el numero de cuenta:           ");
+				String numCuenta = scanner.nextLine();
+				System.out.println(" ingrese el saldo inicial:              ");
+				double saldoInicial = scanner.nextDouble();
+				
+				// creacion de objeto Cuenta
+				
+				Cuenta2 miCuenta = new Cuenta2(titular,numCuenta,saldoInicial);
+				
+				int opcion;
+				do {
+					
+
+			
+				System.out.println("\n =====================================");
+				System.out.println("              MENU DE OPCIONES          ");
+				System.out.println("\n =====================================");
+				System.out.println("1. ver saldo disponible                 ");
+				System.out.println("2. realizar ingreso (deposito)          ");
+				System.out.println("3. realizar retiro                      ");
+				System.out.println("4. Convertir moneda a dolar            ");
+				System.out.println("5. salir                                ");
+				System.out.println(" por favor elija una opcion (1-5)       ");
+				opcion = scanner.nextInt();
+
+		switch (opcion) {
+		case 1: 
+		// enlace a clase cuenta
+			
+			System.out.println("\n Cuenta n°: " + miCuenta.getnumCuenta());
+			System.out.println("\n Saldo actual: $" + miCuenta.getsaldo());
+			
+			break;
+		case 2: 
+		// pedimos los valores para el deposito
+			
+			System.out.println("\n ingrese el monto a depositar: $  ");
+			double ingreso = scanner.nextDouble();
+			miCuenta.depositar(ingreso);
+			break;
+			
+			
+		// pedimos valores para retiro
+			
+		case 3:
+			System.out.println("\n ingrese el monto a retirar:  $  ");
+			double retiro = scanner.nextDouble();
+			miCuenta.retirar(retiro);
+			break; 
+			
+		// enlace a clase conversor
+			
+		case 4:
+			System.out.println("\n----- Conversion de moneda-----  ");
+			System.out.println("\n  tu saldo a simular en  dolar:  ");
+			System.out.println("\n ingrese la tasa de cambio actual:   ");
+			double tasa = scanner.nextDouble();
+			double resultado = miCuenta.convertirMoneda(tasa);
+			System.out.println("\n su saldo en dolar es: $  " +resultado);
+			
+			break; 
+			
+		case 5:
+			System.out.println(" ------cerrando sesion de la billetera---hasta pronto---");
+			break;
+		default:
+			System.out.println("------opcion invalida. porfavor marque la opcion 1 al 5 ");
+		}
+			} while (opcion !=5); 
+			scanner.close();
+			
+			}
+		}

@@ -1,0 +1,75 @@
+package alkewallet;
+
+
+
+	public class Cuenta2 implements Operacionesfinancieras {
+	// atributos para el encapsulamiento
+		
+		private String titular;
+		private String numCuenta;
+		private double saldo;
+		
+	// constructor con parametros 
+		
+	public Cuenta2(String titular, String numCuenta, double saldo) {
+		super();
+		this.titular = titular;
+		this.numCuenta = numCuenta;
+		this.saldo = saldo;
+	}
+	// metodos personalizados 
+
+	public String gettitular() {
+		return titular;
+	}
+	public String getnumCuenta() {
+		return numCuenta;
+		
+	}
+	public double getsaldo() {
+		return saldo;
+		
+	}
+	public void settitular(String titular) {
+		this.titular = titular;
+	}
+	public void setnumCuenta(String numCuenta) {
+		this.numCuenta = numCuenta;
+	}
+	public void setsaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	// implementacion de metodos de la intefaz 
+
+	@Override
+	public boolean retirar(double monto) {
+		if (monto > 0 && monto <= this.saldo) {
+			this.saldo -= monto;
+			System.out.println("\n retiro exitoso. Nuevo saldo: $" +this.saldo);
+			return true;
+		}else {
+			System.out.println("\n error!!! operacion rechazada:  fondos insuficientes");
+			return false;
+		}
+		}
+	@Override
+	public double convertirMoneda(double tasa) {
+		return this.saldo * tasa;
+	}
+
+	@Override
+	public boolean depositar(double monto) {
+		
+		if (monto > 0) {
+			this.saldo += monto;
+			System.out.println("\n deposito exitoso. Nuevo saldo: $" +this.saldo);
+		
+		}else {
+			System.out.println("\n el monto a depositar debe ser mayor a 0");
+		}
+		return false;
+		}
+
+
+
+	}
